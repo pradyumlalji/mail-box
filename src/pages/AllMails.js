@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import MailCard from "../components/mailCard/MailCard";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const AllMails = () => {
     const mailsArr = useSelector((state) => state.users.allMails);
 
     const buttonNameArr = ["Inbox", "Draft", "Spam", "Trash"];
-    const [activeButton, setActiveButton] = useState();
     const navigate = useNavigate();
     const search = window.location.search;
-
     const [filteredArr, setFilteredArr] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState([]);
 

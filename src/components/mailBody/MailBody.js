@@ -18,7 +18,7 @@ const MailBody = () => {
             setMailDetails(mail);
             setIsLoading(false);
         }
-    }, [users]);
+    }, [users, id]);
 
     useEffect(() => {
         fetchUserMails();

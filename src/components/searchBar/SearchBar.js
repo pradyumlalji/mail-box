@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import searchIcon from "../../resources/images/searchIcon.svg";
-import mail from "../../resources/images/mail.svg";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const SearchBar = () => {
@@ -68,7 +67,6 @@ const SearchBar = () => {
                                                     }}
                                                     className="text-[.97vw] mob:text-[3.75vw] font-semibold"
                                                 ></p>
-                                                {/* <span> {email.body.slice(0, 85)},...</span> */}
                                             </div>
                                             <div className="flex items-end">
                                                 <p
@@ -80,7 +78,6 @@ const SearchBar = () => {
                                                     }}
                                                     className="text-[.78vw] mob:text-[3.125vw] text-secondary font-normal"
                                                 ></p>{" "}
-                                                {/* <span> {email.body.slice(0, 85)},...</span> */}
                                             </div>
                                         </div>
                                     </li>

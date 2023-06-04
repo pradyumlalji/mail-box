@@ -5,10 +5,8 @@ const MailCard = (props) => {
     const handleClick = (tag, id) => {
         navigate(`/${tag}/${id}`);
     };
-    const onClickOfCard = () => {};
 
     return (
-        // <a href={`/${props.apiData.tag}/${props.apiData.id}`}>
         <div
             onClick={() => handleClick(props.apiData.tag, props.apiData.id)}
             className="border-[1px] border-[#C4DFDF] gap-[3vw] mob:gap-[1vw] flex p-[.5vw] rounded-[.3vw] mob:rounded-[2vw] hover:shadow-md cursor-pointer whitespace-nowrap mob:whitespace-normal mob:flex-col mob:p-[3vw]"
@@ -23,7 +21,6 @@ const MailCard = (props) => {
                 {props.apiData.body.slice(0, 85)}...
             </p>
         </div>
-        // </a>
     );
 };
 
