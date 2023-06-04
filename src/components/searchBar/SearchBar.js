@@ -96,7 +96,9 @@ const SearchBar = () => {
                             </Link>
                         ))}
                     {filteredArr.length === 0 && (
-                        <div className=" py-[1vw]  overflow-hidden">No Results Found</div>
+                        <div className=" py-[1vw] px-[1vw] mob:p-[3vw] overflow-hidden">
+                            No Results Found
+                        </div>
                     )}
                 </div>
             )}
