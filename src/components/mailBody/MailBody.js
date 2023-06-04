@@ -14,7 +14,7 @@ const MailBody = () => {
 
     useEffect(() => {
         if (users.length > 0) {
-            const mail = users.find((item) => item.id == id);
+            const mail = users.find((item) => item.id === id);
             setMailDetails(mail);
             setIsLoading(false);
         }
