@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import searchIcon from "../../resources/images/searchIcon.svg";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -6,22 +6,33 @@ const SearchBar = () => {
     const mailsArr = useSelector((state) => state.users.allMails);
 
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-
+    const [debouncedFilterText, setDebouncedFilterText] = useState("");
     const [filterText, setFilterText] = useState("");
     const [filteredArr, setFilteredArr] = useState();
 
     const handleFilterChange = (event) => {
-        setIsDropDownOpen(true);
         let query = event.target.value.toLowerCase();
         setFilterText(query);
+    };
 
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setDebouncedFilterText(filterText);
+        }, 1000);
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, [filterText]);
+
+    useEffect(() => {
+        setIsDropDownOpen(true);
         const filtered = mailsArr.filter(
             (email) =>
-                email.subject.toLowerCase().includes(query) ||
-                email.body.toLowerCase().includes(query)
+                email.subject.toLowerCase().includes(debouncedFilterText) ||
+                email.body.toLowerCase().includes(debouncedFilterText)
         );
         setFilteredArr(filtered);
-    };
+    }, [mailsArr, debouncedFilterText]);
 
     const highlightText = (text, query) => {
         const regex = new RegExp(`(${query})`, "gi");
