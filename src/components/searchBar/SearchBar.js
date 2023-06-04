@@ -13,7 +13,7 @@ const SearchBar = () => {
 
     const handleFilterChange = (event) => {
         setIsDropDownOpen(true);
-        let query = event.target.value;
+        let query = event.target.value.toLowerCase();
         setFilterText(query);
 
         const filtered = mailsArr.filter(
@@ -30,8 +30,8 @@ const SearchBar = () => {
     };
 
     return (
-        <div className="relative w-[70%] py-[1vw]">
-            <label className="flex border-[1px] gap-[1vw] border-zircon bg-[#fafafa] p-[.5vw] w-[100%] rounded-[4vw] px-[1vw]">
+        <div className="relative w-[70%] mob:w-full py-[1vw]">
+            <label className="flex border-[1px] gap-[1vw] border-zircon bg-[#fafafa] p-[.5vw] w-[100%] rounded-[4vw] px-[1vw] mob:px-[3vw] mob:py-[2vw] mob:rounded-full">
                 <input
                     type="text"
                     placeholder="Search mail"
@@ -39,10 +39,10 @@ const SearchBar = () => {
                     value={filterText}
                     onChange={(e) => handleFilterChange(e)}
                 />
-                <img className="w-[1vw]" src={searchIcon} alt="" />
+                <img className="w-[1vw] mob:w-[3vw] " src={searchIcon} alt="" />
             </label>
             {isDropDownOpen && filterText.length > 0 && (
-                <div className="absolute scrollbar-thin roundex-[.5vw] scrollbar-thumb-[#8BACAA] hover:scrollbar-thumb-[#5e7f7d] scrollbar-track-[#EEEEEE] bg-[#fafafa] w-full top-[100%] max-h-[30vw] overflow-y-scroll rounded-b-[1vw] shadow-sm  text-start  ">
+                <div className="absolute scrollbar-thin roundex-[.5vw] scrollbar-thumb-[#8BACAA] hover:scrollbar-thumb-[#5e7f7d] scrollbar-track-[#EEEEEE] bg-[#fafafa] w-full top-[100%] max-h-[30vw] mob:max-h-[80vw] overflow-y-scroll rounded-b-[1vw] shadow-sm  text-start  ">
                     {filteredArr &&
                         filteredArr.map((email, index) => (
                             <Link
@@ -55,10 +55,8 @@ const SearchBar = () => {
                                     key={email.id}
                                 >
                                     <li className="flex items-center gap-[1vw]">
-                                        <div>
-                                            {" "}
-                                            <img className="w-[1vw]" src={mail} alt="" />
-                                        </div>
+                                        <div className=""></div>
+
                                         <div>
                                             <div className="flex  items-end">
                                                 <p
@@ -68,9 +66,9 @@ const SearchBar = () => {
                                                             filterText
                                                         ),
                                                     }}
-                                                    className="text-[.97vw] font-semibold"
+                                                    className="text-[.97vw] mob:text-[3.75vw] font-semibold"
                                                 ></p>
-                                                <span>...</span>
+                                                {/* <span> {email.body.slice(0, 85)},...</span> */}
                                             </div>
                                             <div className="flex items-end">
                                                 <p
@@ -80,9 +78,9 @@ const SearchBar = () => {
                                                             filterText
                                                         ),
                                                     }}
-                                                    className="text-[.78vw] text-charcoal font-normal"
+                                                    className="text-[.78vw] mob:text-[3.125vw] text-secondary font-normal"
                                                 ></p>{" "}
-                                                <span>...</span>
+                                                {/* <span> {email.body.slice(0, 85)},...</span> */}
                                             </div>
                                         </div>
                                     </li>

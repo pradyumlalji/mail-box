@@ -2,6 +2,9 @@
 module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
+        screens: {
+            mob: { max: "600px" },
+        },
         extend: {
             colors: {
                 granite: "#696969",

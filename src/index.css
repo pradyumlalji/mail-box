@@ -20,3 +20,12 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+@layer components {
+    .sectionTitle {
+        @apply text-start text-[1.5vw] mob:text-[5vw] font-semibold text-secondary pb-[1vw];
+    }
+
+    .countTitle {
+        @apply text-[1vw] mob:text-[3.75vw] font-light pl-[.5vw];
+    }
+}
