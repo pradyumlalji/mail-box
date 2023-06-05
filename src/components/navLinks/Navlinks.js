@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import closIcon from "../../resources/images/x.svg";
 
 const Navlinks = (props) => {
     const { isMobMenuOpen, setIsMobMenuOpen } = props;
+    const [activeLink, setActiveLink] = useState(2);
 
     const location = useLocation();
     const navlinksData = [
@@ -24,7 +25,7 @@ const Navlinks = (props) => {
             name: "Spam",
         },
         {
-            link: "/Trash",
+            link: "/trash",
             name: "Trash",
         },
     ];
@@ -35,7 +36,9 @@ const Navlinks = (props) => {
                 <p className="text-[2vw] mob:text-[5.75vw] text-[#41644A]">Menu</p>
                 <img
                     className="w-[4vw] hidden mob:block "
-                    onClick={() => setIsMobMenuOpen(!isMobMenuOpen)}
+                    onClick={() => {
+                        setIsMobMenuOpen(!isMobMenuOpen);
+                    }}
                     src={closIcon}
                     alt=""
                 />
@@ -43,9 +46,12 @@ const Navlinks = (props) => {
 
             {navlinksData.map((data, index) => (
                 <Link
-                    onClick={() => setIsMobMenuOpen(!isMobMenuOpen)}
+                    onClick={() => {
+                        setActiveLink(index);
+                        setIsMobMenuOpen(!isMobMenuOpen);
+                    }}
                     className={`px-[2vw] p-[.25vw] rounded-r-[1vw] transition-all duration-250 transition-colors text-[1vw] mob:text-[3.75vw]  ${
-                        location.pathname === data.link
+                        activeLink === index
                             ? "bg-[#8BACAA] text-white font-semibold "
                             : "bg-transparent text-[#41644A] hover:bg-white hover:text-black"
                     }`}

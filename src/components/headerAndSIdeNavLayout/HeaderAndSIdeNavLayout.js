@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import mailbox from "../../resources/animations/mailbox.json";
 import menuIcon from "../../resources/images/menu.svg";
-
 import Lottie from "lottie-react";
 import Navlinks from "../navLinks/Navlinks";
 import SearchBar from "../searchBar/SearchBar";
+
 const HeaderAndSideNavLayout = (props) => {
     const [isMobMenuOpen, setIsMobMenuOpen] = useState(false);
     return (
         <div className="h-screen w-full grow flex flex-col pr-[1vw]  ">
             <div className="flex grow gap-[1%] ">
                 <div className="bg-[#E3F4F4] mob:hidden w-[14%] flex flex-col items-center justify-between items-start rounded-r-[2vw] max-h-screen sticky top-0">
-                    <Navlinks isMobMenuOpen="" setIsMobMenuOpen="" />
+                    <Navlinks isMobMenuOpen={isMobMenuOpen} setIsMobMenuOpen={setIsMobMenuOpen} />
                     <div className="h-auto">
                         <Lottie animationData={mailbox} className="w-full" />
                     </div>
